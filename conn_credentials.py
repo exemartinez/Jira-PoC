@@ -17,22 +17,30 @@ jira = JIRA(options, basic_auth=('emartinez', 'itT85278952'))# a username/passwo
 #props = jira.application_properties()
 # Find all issues reported by the admin
 
-issues = jira.search_issues("project='BSTI'")
+#Check how many files are required:
+issues = jira.search_issues("project='BSTI'",startAt=0, maxResults=0)
+issues = jira.search_issues("project='BSTI'",startAt=0, maxResults=issues.total)
 
 completedSPs = 0
 totalSPs = 0
 totalIssues = 0
-#print (len(issues)
+print ("Total amount issues available: " + str(issues.total))
+
+#TODO Revisar el custom field de "Story Point", como hacerlo dinamico en vez de hardcodearlo.
+#TODO Tirar todo en un csv file.
+#TODO verificar por que nos da diferentes los totales de SPs con lo que sale de la aplicacion WEB.
 
 for i in issues:
 
     totalIssues = totalIssues + 1
-
-    if(i.fields.customfield_11602!=None):
-        print("Issue: " + str(i.key) + " Summary: " + i.fields.summary + " Status: " + str(i.fields.status) + " SPs: " + str(int(str(i.fields.customfield_11602)[::-2])))
-        totalSPs = totalSPs + int(str(i.fields.customfield_11602)[::-2])
-        if ((str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready to Merge")  or (str(i.fields.status)=="Ready to Test")):
-            completedSPs = completedSPs + int(str(i.fields.customfield_11602)[::-2])
+    try:
+        if(i.fields.customfield_11602!=None):
+            print("Issue: " + str(i.key) + " Summary: " + i.fields.summary + " Status: " + str(i.fields.status) + " SPs: " + str(int(str(i.fields.customfield_11602)[::-2])))
+            totalSPs = totalSPs + int(str(i.fields.customfield_11602)[::-2])
+            if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready to Merge")  or (str(i.fields.status)=="Ready to Test")):
+                completedSPs = completedSPs + int(str(i.fields.customfield_11602)[::-2])
+    except:
+        pass
 
 print("Total issues: " + str(totalIssues))
 print("Completed SPs: " + str(completedSPs))
