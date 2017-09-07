@@ -2,6 +2,33 @@
 # username and password over HTTP BASIC authentication.
 from collections import Counter
 from jira import JIRA
+from cStringIO import StringIO
+import time
+
+#Constants
+__PROJECT__='NBSFI'
+
+def getCustomFieldID(name):
+    '''Getting all the custom fields ID's'''
+    # Fetch all fields
+    allfields=jira.fields()
+    # Make a map from field name -> field id
+    nameMap = {field['name']:field['id'] for field in allfields}
+
+    try:
+        result=nameMap[name]
+    except:
+        return None
+    #Well known codes:
+        #customfield_11602 <- Story Points code for the custom field.
+
+    return result
+
+def getSendToCSVFile(fileStr):
+    '''Sends the String to a file'''
+    f = open(time.strftime("%Y%m%d") + "-" + time.strftime("%H%M%S") + "-jira-export.csv","wb")
+    f.write(fileStr)
+    f.close()
 
 # By default, the client will connect to a JIRA instance started from the Atlassian Plugin SDK.
 # See https://developer.atlassian.com/display/DOCS/Installing+the+Atlassian+Plugin+SDK
@@ -18,44 +45,58 @@ jira = JIRA(options, basic_auth=('emartinez', 'itT85278952'))# a username/passwo
 # Find all issues reported by the admin
 
 #Check how many files are required:
-issues = jira.search_issues("project='BSTI'",startAt=0, maxResults=0)
-issues = jira.search_issues("project='BSTI'",startAt=0, maxResults=issues.total)
+issues = jira.search_issues("project=" + __PROJECT__,startAt=0, maxResults=0)
+issues = jira.search_issues("project=" + __PROJECT__,startAt=0, maxResults=issues.total)
 
 completedSPs = 0
 totalSPs = 0
 totalIssues = 0
+errorCount=0
+csvString=""
+
 print ("Total amount issues available: " + str(issues.total))
 
-#TODO Revisar el custom field de "Story Point", como hacerlo dinamico en vez de hardcodearlo.
-#TODO Tirar todo en un csv file.
-#TODO verificar por que nos da diferentes los totales de SPs con lo que sale de la aplicacion WEB.
+#TODO: Revisar el custom field de "Story Point", como hacerlo dinamico en vez de hardcodearlo.
+#TODO: Tirar todo en un csv file.
+#TODO: verificar por que nos da diferentes los totales de SPs con lo que sale de la aplicacion WEB.
+
+#Prepare to efficiently concatenate strings.
+stringBuffer = StringIO()
+stringBuffer.write("Issue;Summary; Status; SPs\n")
 
 for i in issues:
 
     totalIssues = totalIssues + 1
+
+    #print(getCustomFieldID("Story Point"))
+    #print(getCustomFieldID("Story Points"))
+
     try:
         if(i.fields.customfield_11602!=None):
-            print("Issue: " + str(i.key) + " Summary: " + i.fields.summary + " Status: " + str(i.fields.status) + " SPs: " + str(int(str(i.fields.customfield_11602)[::-2])))
+
+            print("Issue: " + str(i.key) + " Summary: " + i.fields.summary.strip() + " Status: " + str(i.fields.status) + " SPs: " + str(int(str(i.fields.customfield_11602)[::-2])))
+            stringBuffer.write(str(i.key).strip() + ";" + i.fields.summary.strip() + ";" + str(i.fields.status).strip() + ";" + str(int(str(i.fields.customfield_11602)[::-2].strip())) +"\n")
+
             totalSPs = totalSPs + int(str(i.fields.customfield_11602)[::-2])
+
             if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready to Merge")  or (str(i.fields.status)=="Ready to Test")):
                 completedSPs = completedSPs + int(str(i.fields.customfield_11602)[::-2])
     except:
+        print("Error in Issue: " + str(i.key) + " -> " + i.fields.summary)
+        try:
+            stringBuffer.write(str(i.key) + ";" + i.fields.summary.strip() +";" + str(i.fields.status) + ";0" + "\n")
+        except:
+            stringBuffer.write(str(i.key) + ";TBD;" + str(i.fields.status) + ";0" + "\n")
+        errorCount = errorCount + 1
         pass
 
 print("Total issues: " + str(totalIssues))
 print("Completed SPs: " + str(completedSPs))
 print("Total SPs: " + str(totalSPs))
+print("Error records: " + str(errorCount))
 
-def getCustomFieldID(name):
-    '''Getting all the custom fields ID's'''
-    # Fetch all fields
-    allfields=jira.fields()
-    # Make a map from field name -> field id
-    nameMap = {field['name']:field['id'] for field in allfields}
-
-    #Well known codes:
-        #customfield_11602 <- Story Points code for the custom field.
-    return nameMap[name]
+getSendToCSVFile(stringBuffer.getvalue())
+stringBuffer.close()
 
 # Find the top three projects containing issues reported by admin
 '''top_three = Counter(
