@@ -36,7 +36,7 @@ def getCustomFieldID(name):
 
 def getSendToCSVFile(fileStr):
     '''Sends the String to a file'''
-    f = open(time.strftime("%Y%m%d") + "-" + time.strftime("%H%M%S") + "-jira-export.csv","wb")
+    f = open(".\\xls-export\\" + time.strftime("%Y%m%d") + "-" + time.strftime("%H%M%S") + "-jira-export.csv","wb")
     f.write(fileStr)
     f.close()
 
@@ -44,9 +44,7 @@ def getSendToCSVFile(fileStr):
 # See https://developer.atlassian.com/display/DOCS/Installing+the+Atlassian+Plugin+SDK
 # for details.
 
-options = {
-'server': 'http://issues.mercap.net:8080'}
-
+options = {'server': 'http://issues.mercap.net:8080'}
 jira = JIRA(options, basic_auth=('emartinez', 'itT85278952'))# a username/password tuple
 
 # Get the mutable application properties for this server (requires
@@ -60,6 +58,8 @@ issues = jira.search_issues("project=" + __PROJECT__,startAt=0, maxResults=issue
 
 completedDevelopmentSPs = 0
 completedAnalysisSPs = 0
+totalDevelopmentSPs = 0 
+totalAnalysisSPs = 0
 totalSPs = 0
 totalIssues = 0
 errorCount = 0
@@ -92,6 +92,12 @@ for i in issues:
                 stringBuffer.write(str(i.key).strip() + ";" + str(i.fields.issuetype) +  ";" + i.fields.summary.strip() + ";" + str(i.fields.status).strip() + ";" + str(int(i.fields.customfield_11602)) +"\n")
                 
                 totalSPs = totalSPs + float(storyPoints)
+
+                #Summing the analysis and development story points by each side. #TODO:Needed refactoring.
+                if ((str(i.fields.issuetype) == "Testing") or (str(i.fields.issuetype) == "Analysis")):
+                    totalAnalysisSPs += float(storyPoints)
+                elif (str(i.fields.issuetype) == "Development"):
+                    totalDevelopmentSPs = totalDevelopmentSPs + float(storyPoints)
                 
                 if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready To Merge")  or (str(i.fields.status)=="Ready To Test")):
                     
@@ -113,8 +119,8 @@ print("\n"*3)
 print("-"*80)
 print("\n")
 print("Total issues: " + str(totalIssues))
-print("Completed Development SPs: " + str(completedDevelopmentSPs))
-print("Completed Analysis SPs: " + str(completedAnalysisSPs))
+print("Completed Development SPs: " + str(completedDevelopmentSPs) + "/" + str(totalDevelopmentSPs))
+print("Completed Analysis SPs: " + str(completedAnalysisSPs) + "/" + str(totalAnalysisSPs))
 print("Total SPs: " + str(totalSPs))
 print("Error records: " + str(errorCount))
 
