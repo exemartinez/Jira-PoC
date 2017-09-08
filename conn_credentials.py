@@ -58,7 +58,8 @@ jira = JIRA(options, basic_auth=('emartinez', 'itT85278952'))# a username/passwo
 issues = jira.search_issues("project=" + __PROJECT__,startAt=0, maxResults=0)
 issues = jira.search_issues("project=" + __PROJECT__,startAt=0, maxResults=issues.total)
 
-completedSPs = 0
+completedDevelopmentSPs = 0
+completedAnalysisSPs = 0
 totalSPs = 0
 totalIssues = 0
 errorCount = 0
@@ -67,11 +68,9 @@ storyPoints = ""
 
 print ("Total amount issues available: " + str(issues.total))
 
-#TODO: verificar por que nos da diferentes los totales de SPs con lo que sale de la aplicacion WEB.
-
-#Prepare to efficiently concatenate strings.
+#Searching for the issues and preparing the excel file for processing.
 stringBuffer = StringIO()
-stringBuffer.write("Issue;Summary; Status; SPs\n")
+stringBuffer.write("Issue;Type;Summary; Status; SPs\n")
 
 for i in issues:
 
@@ -81,26 +80,29 @@ for i in issues:
     #print(getCustomFieldID("Story Points"))
 
     try:
-     
+        
         if ((str(i.fields.issuetype) == "Testing") or (str(i.fields.issuetype) == "Analysis") or (str(i.fields.issuetype) == "Development")):
             
-            storyPoints = str(i.fields.customfield_11602)[::-2]
+            storyPoints = str(i.fields.customfield_11602)
             
             if (str(i.fields.customfield_11602) != "None"):
              
                 print("Issue: " + i.key.decode() + " Type: " + str(i.fields.issuetype) + " Summary: " + i.fields.summary.strip() + " Status: \'" + str(i.fields.status) + "\' SPs: " + storyPoints)
                 
-                stringBuffer.write(str(i.key).strip() + ";" + str(i.fields.issuetype) +  ";" + i.fields.summary.strip() + ";" + str(i.fields.status).strip() + ";" + storyPoints +"\n")
+                stringBuffer.write(str(i.key).strip() + ";" + str(i.fields.issuetype) +  ";" + i.fields.summary.strip() + ";" + str(i.fields.status).strip() + ";" + str(int(i.fields.customfield_11602)) +"\n")
                 
-                totalSPs = totalSPs + int(str(i.fields.customfield_11602)[::-2])
+                totalSPs = totalSPs + float(storyPoints)
                 
                 if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready To Merge")  or (str(i.fields.status)=="Ready To Test")):
-                    completedSPs = completedSPs + int(storyPoints)
+                    
+                    if (str(i.fields.issuetype) == "Development"):
+                        completedDevelopmentSPs = completedDevelopmentSPs + float(storyPoints)
+                    else:
+                        completedAnalysisSPs = completedAnalysisSPs + float(storyPoints)
                     
     except Exception as e:
 
         print("Error in Issue: " + str(i.key) + " -> " + i.fields.summary + " Error: " + str(e))
-
 
         stringBuffer.write(str(i.key) + ";" + str(i.fields.issuetype) +  ";" +  i.fields.summary.strip() +";" + str(i.fields.status) + ";0" + "\n")
 
@@ -108,7 +110,8 @@ for i in issues:
         pass
 
 print("Total issues: " + str(totalIssues))
-print("Completed SPs: " + str(completedSPs))
+print("Completed Devs SPs: " + str(completedDevelopmentSPs))
+print("Completed Devs SPs: " + str(completedAnalysisSPs))
 print("Total SPs: " + str(totalSPs))
 print("Error records: " + str(errorCount))
 
