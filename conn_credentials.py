@@ -4,7 +4,7 @@ from collections import Counter
 from jira import JIRA
 from cStringIO import StringIO
 import time
-import sys
+import sys 
 
 #Codification system.
 '''WATCH OUT THIS LINES ~ THESE COULD BROKE THE ENTIRE CODE; FIND SOME OTHER WAY TO ENCONDE THE STRINGS.'''
