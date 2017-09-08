@@ -1,0 +1,205 @@
+Issue;Summary; Status; SPs
+BSTI-185;Desarrollo - Servicio de Imputación de débitos y créditos sobre caja de ahorro. (Integracion Sistema Interfaces Core);In Progress;5
+BSTI-185;Desarrollo - Servicio de Imputación de débitos y créditos sobre caja de ahorro. (Integracion Sistema Interfaces Core);In Progress;0
+BSTI-184;Desarrollo - Consulta Ingresos brutos (Integracion Sistema de Interfaces Core);Open;3
+BSTI-184;Desarrollo - Consulta Ingresos brutos (Integracion Sistema de Interfaces Core);Open;0
+BSTI-183;Desarrollo - Servicio de Consulta de Datos de Clientes + Relaciones Apoderados (Integracion Sistema interfaces Core);Open;3
+BSTI-183;Desarrollo - Servicio de Consulta de Datos de Clientes + Relaciones Apoderados (Integracion Sistema interfaces Core);Open;0
+BSTI-168;Testing - Regresionar integraciones;Open;4
+BSTI-168;Testing - Regresionar integraciones;Open;0
+BSTI-167;Testing - Integracion Envio Mails (MACRO);Closed;3
+BSTI-167;Testing - Integracion Envio Mails (MACRO);Closed;0
+BSTI-166;Testing - Integracion Issues Produccion (MACRO);Open;4
+BSTI-166;Testing - Integracion Issues Produccion (MACRO);Open;0
+BSTI-163;Testing - Parametria contables;Open;8
+BSTI-163;Testing - Parametria contables;Open;0
+BSTI-162;Testing - Contabilidad - Plan de cuentas & Cabeceras Contables;Open;3
+BSTI-162;Testing - Contabilidad - Plan de cuentas & Cabeceras Contables;Open;0
+BSTI-161;Testing - Otra parametria y datos adicionales;Open;8
+BSTI-161;Testing - Otra parametria y datos adicionales;Open;0
+BSTI-160;Testing - VUELCOS DE POSICIONES - Plazos Fijos;Open;8
+BSTI-160;Testing - VUELCOS DE POSICIONES - Plazos Fijos;Open;0
+BSTI-159;Testing - VUELCOS DE POSICIONES - Órdenes y Operaciones no liquidadas;Open;8
+BSTI-159;Testing - VUELCOS DE POSICIONES - Órdenes y Operaciones no liquidadas;Open;0
+BSTI-158;Testing - VUELCOS DE POSICIONES - Posiciones en Otros custodios;Open;8
+BSTI-158;Testing - VUELCOS DE POSICIONES - Posiciones en Otros custodios;Open;0
+BSTI-157;Testing - VUELCOS DE POSICIONES - Vuelco Tenencias Caja Valores;Open;8
+BSTI-157;Testing - VUELCOS DE POSICIONES - Vuelco Tenencias Caja Valores;Open;0
+BSTI-156;Testing - VUELCOS DE CLIENTES - Vuelco Cuentas de Liquidación Monetaria y de Títulos;Open;8
+BSTI-156;Testing - VUELCOS DE CLIENTES - Vuelco Cuentas de Liquidación Monetaria y de Títulos;Open;0
+BSTI-155;Testing - VUELCOS DE CLIENTES - Vuelco Inicial Relaciones con Intervinientes;Open;8
+BSTI-155;Testing - VUELCOS DE CLIENTES - Vuelco Inicial Relaciones con Intervinientes;Open;0
+BSTI-154;Testing - VUELCOS DE CLIENTES - Vuelco inicial Cuentas Comitentes;Open;8
+BSTI-154;Testing - VUELCOS DE CLIENTES - Vuelco inicial Cuentas Comitentes;Open;0
+BSTI-144;Desarrollo - Contabilidad - Plan de cuentas & Cabeceras Contables;Open;8
+BSTI-144;Desarrollo - Contabilidad - Plan de cuentas & Cabeceras Contables;Open;0
+BSTI-143;Desarrollo - Otra parametria y datos adicionales;Open;8
+BSTI-143;Desarrollo - Otra parametria y datos adicionales;Open;0
+BSTI-141;Desarrollo - VUELCOS DE POSICIONES - Órdenes y Operaciones no liquidadas;Open;8
+BSTI-141;Desarrollo - VUELCOS DE POSICIONES - Órdenes y Operaciones no liquidadas;Open;0
+BSTI-140;Desarrollo - VUELCOS DE POSICIONES - Posiciones en Otros custodios;Open;8
+BSTI-140;Desarrollo - VUELCOS DE POSICIONES - Posiciones en Otros custodios;Open;0
+BSTI-139;Desarrollo - VUELCOS DE POSICIONES - Vuelco Tenencias Caja Valores;Open;8
+BSTI-139;Desarrollo - VUELCOS DE POSICIONES - Vuelco Tenencias Caja Valores;Open;0
+BSTI-138;Desarrollo - VUELCOS DE CLIENTES - Vuelco Cuentas de Liquidación Monetaria y de Títulos;Open;8
+BSTI-138;Desarrollo - VUELCOS DE CLIENTES - Vuelco Cuentas de Liquidación Monetaria y de Títulos;Open;0
+BSTI-137;Desarrollo - VUELCOS DE CLIENTES - Vuelco Inicial Relaciones con Intervinientes;Open;8
+BSTI-137;Desarrollo - VUELCOS DE CLIENTES - Vuelco Inicial Relaciones con Intervinientes;Open;0
+BSTI-131;Testing - Integración desconexión automática;Ready To Test;1
+BSTI-131;Testing - Integración desconexión automática;Ready To Test;0
+BSTI-130;Testing - Integración Plazos Fijos BH;Closed;1
+BSTI-130;Testing - Integración Plazos Fijos BH;Closed;0
+BSTI-129;Testing - Integracion CAMBIOS (BH);Closed;3
+BSTI-129;Testing - Integracion CAMBIOS (BH);Closed;0
+BSTI-128;Analisis - Ajustes de reportes;Open;3
+BSTI-128;Analisis - Ajustes de reportes;Open;0
+BSTI-127;Analisis - Ajustes de vouchers;Open;8
+BSTI-127;Analisis - Ajustes de vouchers;Open;0
+BSTI-126;Testing - Ajustes de vouchers;Open;8
+BSTI-126;Testing - Ajustes de vouchers;Open;0
+BSTI-125;Testing - Ajustes de reportes;Open;3
+BSTI-125;Testing - Ajustes de reportes;Open;0
+BSTI-124;Testing - SISCEN 12;Open;8
+BSTI-124;Testing - SISCEN 12;Open;0
+BSTI-123;Testing - Boletos Cambios (Nuevo - BST - OCINBOL);Open;4
+BSTI-123;Testing - Boletos Cambios (Nuevo - BST - OCINBOL);Open;0
+BSTI-122;Testing - Boletos Arbitrajes (Nuevo - BST - OCINARB);Open;4
+BSTI-122;Testing - Boletos Arbitrajes (Nuevo - BST - OCINARB);Open;0
+BSTI-121;Testing - Riesgo Mercado;Open;3
+BSTI-121;Testing - Riesgo Mercado;Open;0
+BSTI-120;Testing - OPCAM;Open;1
+BSTI-120;Testing - OPCAM;Open;0
+BSTI-119;Testing - Siter;Open;5
+BSTI-119;Testing - Siter;Open;0
+BSTI-118;Testing - Operaciones a Termino;Open;3
+BSTI-118;Testing - Operaciones a Termino;Open;0
+BSTI-117;Testing - Lavado de Dinero;Open;1
+BSTI-117;Testing - Lavado de Dinero;Open;0
+BSTI-116;Desarrollo - SISCEN 12;Canceled;5
+BSTI-116;Desarrollo - SISCEN 12;Canceled;0
+BSTI-115;Desarrollo -  Boletos Cambios (Nuevo - BST - OCINBOL);Open;1
+BSTI-115;Desarrollo -  Boletos Cambios (Nuevo - BST - OCINBOL);Open;0
+BSTI-114;Desarrollo - Boletos Arbitrajes (Nuevo - BST - OCINARB);Open;1
+BSTI-114;Desarrollo - Boletos Arbitrajes (Nuevo - BST - OCINARB);Open;0
+BSTI-113;Desarrollo - Riesgo Mercado;Open;3
+BSTI-113;Desarrollo - Riesgo Mercado;Open;0
+BSTI-112;Desarrollo - OPCAM;Open;1
+BSTI-112;Desarrollo - OPCAM;Open;0
+BSTI-111;Desarrollo - Siter;Open;8
+BSTI-111;Desarrollo - Siter;Open;0
+BSTI-110;Desarrollo - Operaciones a Termino;Canceled;1
+BSTI-110;Desarrollo - Operaciones a Termino;Canceled;0
+BSTI-109;Desarrollo - Lavado de Dinero;Open;1
+BSTI-109;Desarrollo - Lavado de Dinero;Open;0
+BSTI-108;Analisis - SISCEN 12;Canceled;5
+BSTI-108;Analisis - SISCEN 12;Canceled;0
+BSTI-107;Analisis - Boletos Cambios (Nuevo - BST - OCINBOL);Open;1
+BSTI-107;Analisis - Boletos Cambios (Nuevo - BST - OCINBOL);Open;0
+BSTI-106;Anallisis - Boletos Arbitrajes (Nuevo - BST - OCINARB);Open;1
+BSTI-106;Anallisis - Boletos Arbitrajes (Nuevo - BST - OCINARB);Open;0
+BSTI-105;Analisis - Riesgo Mercado;Open;8
+BSTI-105;Analisis - Riesgo Mercado;Open;0
+BSTI-104;Analisis - OPCAM;Open;1
+BSTI-104;Analisis - OPCAM;Open;0
+BSTI-103;Analisis - Siter;Open;5
+BSTI-103;Analisis - Siter;Open;0
+BSTI-102;Analisis - Operaciones a Termino;Canceled;8
+BSTI-102;Analisis - Operaciones a Termino;Canceled;0
+BSTI-101;Analisis - Lavado de Dinero;Open;1
+BSTI-101;Analisis - Lavado de Dinero;Open;0
+BSTI-100;Desarrollo - Interfaz de Asientos Contables;Canceled;5
+BSTI-100;Desarrollo - Interfaz de Asientos Contables;Canceled;0
+BSTI-99;Desarrollo - Servicio de Productos de un cliente;In Progress;8
+BSTI-99;Desarrollo - Servicio de Productos de un cliente;In Progress;0
+BSTI-98;Desarrollo - Servicio de Consulta de Datos de Clientes + Relaciones Apoderados;Ready To Merge;3
+BSTI-98;Desarrollo - Servicio de Consulta de Datos de Clientes + Relaciones Apoderados;Ready To Merge;0
+BSTI-97;Desarrollo - Interfaz de actualización de datos de apoderados (vista bd);Open;8
+BSTI-97;Desarrollo - Interfaz de actualización de datos de apoderados (vista bd);Open;0
+BSTI-96;Analisis - Interfaz de Asientos Contables;Canceled;3
+BSTI-96;Analisis - Interfaz de Asientos Contables;Canceled;0
+BSTI-95;Analisis - Servicio de Productos de un cliente;Open;3
+BSTI-95;Analisis - Servicio de Productos de un cliente;Open;0
+BSTI-94;Analisis - Servicio de Consulta de Datos de Clientes;In Progress;3
+BSTI-94;Analisis - Servicio de Consulta de Datos de Clientes;In Progress;0
+BSTI-93;Analisis - Interfaz de actualización de datos de apoderados (vista bd);Open;8
+BSTI-93;Analisis - Interfaz de actualización de datos de apoderados (vista bd);Open;0
+BSTI-92;Testing - Interfaz de Asientos Contables;Open;5
+BSTI-92;Testing - Interfaz de Asientos Contables;Open;0
+BSTI-91;Testing - Servicio de Productos de un cliente;Open;5
+BSTI-91;Testing - Servicio de Productos de un cliente;Open;0
+BSTI-90;Testing - Servicio de Consulta de Datos de Clientes;Open;5
+BSTI-90;Testing - Servicio de Consulta de Datos de Clientes;Open;0
+BSTI-89;Testing - Interfaz de actualización de datos de apoderados (vista bd);Open;8
+BSTI-89;Testing - Interfaz de actualización de datos de apoderados (vista bd);Open;0
+BSTI-88;Testing - Parametria de ingresos brutos;Open;3
+BSTI-88;Testing - Parametria de ingresos brutos;Open;0
+BSTI-87;Analisis - Parametria de ingresos brutos;Open;3
+BSTI-87;Analisis - Parametria de ingresos brutos;Open;0
+BSTI-86;Testing - Consulta Ingresos brutos;Open;3
+BSTI-86;Testing - Consulta Ingresos brutos;Open;0
+BSTI-85;Analisis - Consulta Ingresos brutos;Open;3
+BSTI-85;Analisis - Consulta Ingresos brutos;Open;0
+BSTI-84;Desarrollo - Consulta Ingresos brutos;Ready To Merge;5
+BSTI-84;Desarrollo - Consulta Ingresos brutos;Ready To Merge;0
+BSTI-83;Mal formato del parámetro fecha al importar órdenes;Ready To Test;1
+BSTI-83;Mal formato del parámetro fecha al importar órdenes;Ready To Test;0
+BSTI-82;Integracion Envio Mails (MACRO);Closed;1
+BSTI-82;Integracion Envio Mails (MACRO);Closed;0
+BSTI-81;Integracion Dispatcher System;Closed;8
+BSTI-81;Integracion Dispatcher System;Closed;0
+BSTI-79;Integracion desconexion automatica de usuarios;Closed;8
+BSTI-79;Integracion desconexion automatica de usuarios;Closed;0
+BSTI-77;Capacitacion Seguridad;Closed;0
+BSTI-74;Integracion Plazos Fijos BH;Closed;1
+BSTI-74;Integracion Plazos Fijos BH;Closed;0
+BSTI-70;Entrega para testing de Interfaces Online & Batch;Shipped;0
+BSTI-69;Fin de proyecto / Inicio del soporte;Open;0
+BSTI-68;Puesta en Producción;Open;0
+BSTI-67;Aceptacion de version para implementacion;Open;0
+BSTI-66;Entrega para testing (BANCO);Open;0
+BSTI-65;Instalacion de ambiente;Closed;0
+BSTI-64;Fin Etapa de assessment Banco;Closed;0
+BSTI-63;Inicio proyecto BST;Closed;0
+BSTI-61;Homologacion y pruebas ruteador;Open;3
+BSTI-61;Homologacion y pruebas ruteador;Open;0
+BSTI-59;Capacitacion;Open;0
+BSTI-58;Desarrollo - VUELCOS DE CLIENTES - Vuelco inicial Cuentas Comitentes;Closed;8
+BSTI-58;Desarrollo - VUELCOS DE CLIENTES - Vuelco inicial Cuentas Comitentes;Closed;0
+BSTI-57;Desarrollo - Ajustes de vouchers;Open;1
+BSTI-57;Desarrollo - Ajustes de vouchers;Open;0
+BSTI-56;Desarrollo - Ajustes de reportes;Open;1
+BSTI-56;Desarrollo - Ajustes de reportes;Open;0
+BSTI-55;Testing - Titulos Valores;Open;3
+BSTI-55;Testing - Titulos Valores;Open;0
+BSTI-54;Desarrollo - Titulos Valores;In Progress;1
+BSTI-54;Desarrollo - Titulos Valores;In Progress;0
+BSTI-53;Analisis - Titulos Valores;Approved;3
+BSTI-53;Analisis - Titulos Valores;Approved;0
+BSTI-52;Testing - Servicio de Imputación de débitos y créditos sobre caja de ahorro;Open;5
+BSTI-52;Testing - Servicio de Imputación de débitos y créditos sobre caja de ahorro;Open;0
+BSTI-51;Desarrollo - Parametria de ingresos brutos;Open;5
+BSTI-51;Desarrollo - Parametria de ingresos brutos;Open;0
+BSTI-50;Desarrollo - Servicio de Imputación de débitos y créditos sobre caja de ahorro;Ready To Merge;8
+BSTI-50;Desarrollo - Servicio de Imputación de débitos y créditos sobre caja de ahorro;Ready To Merge;0
+BSTI-48;Analisis - Servicio de Imputación de débitos y créditos sobre caja de ahorro;Open;3
+BSTI-48;Analisis - Servicio de Imputación de débitos y créditos sobre caja de ahorro;Open;0
+BSTI-47;Desarrollo - Integracion Issues Produccion (MACRO);Closed;1
+BSTI-47;Desarrollo - Integracion Issues Produccion (MACRO);Closed;0
+BSTI-45;Analisis - Parametria contable;In Progress;3
+BSTI-45;Analisis - Parametria contable;In Progress;0
+BSTI-31;Muestra general de Unitrade;Open;0
+BSTI-30;Reunion de revision de documentos funcionales;Closed;0
+BSTI-29;Integracion CAMBIOS BH;Closed;1
+BSTI-29;Integracion CAMBIOS BH;Closed;0
+BSTI-28;Integracion actualizaciones posteriores de ruteador;Closed;3
+BSTI-28;Integracion actualizaciones posteriores de ruteador;Closed;0
+BSTI-27;Reunion Impuestos;Closed;0
+BSTI-11;Reunion de cierre assessment;Closed;0
+BSTI-10;Reunion contabilidad;Closed;0
+BSTI-9;Interfaces con el Core y Batch - Reunion;Closed;0
+BSTI-7;Interfaces Normativas - Reunion;Closed;0
+BSTI-6;Circuito Funcional - Reunion;Closed;0
+BSTI-4;Vuelcos Iniciales  - Reunion;Closed;0
+BSTI-3;Liderazgo y gestion de proyectos;Open;0
+BSTI-2;Arquitectura y Sistemas - Reunion;Closed;0
+BSTI-1;Reunion de Kickoff;Closed;0

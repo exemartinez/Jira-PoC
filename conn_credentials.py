@@ -4,10 +4,17 @@ from collections import Counter
 from jira import JIRA
 from cStringIO import StringIO
 import time
+import sys
+
+#Codification system.
+'''WATCH OUT THIS LINES ~ THESE COULD BROKE THE ENTIRE CODE; FIND SOME OTHER WAY TO ENCONDE THE STRINGS.'''
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 #Constants
-__PROJECT__='NBSFI'
+__PROJECT__='BSTI'
 
+#Common functions
 def getCustomFieldID(name):
     '''Getting all the custom fields ID's'''
     # Fetch all fields
@@ -56,8 +63,6 @@ csvString=""
 
 print ("Total amount issues available: " + str(issues.total))
 
-#TODO: Revisar el custom field de "Story Point", como hacerlo dinamico en vez de hardcodearlo.
-#TODO: Tirar todo en un csv file.
 #TODO: verificar por que nos da diferentes los totales de SPs con lo que sale de la aplicacion WEB.
 
 #Prepare to efficiently concatenate strings.
@@ -74,19 +79,20 @@ for i in issues:
     try:
         if(i.fields.customfield_11602!=None):
 
-            print("Issue: " + str(i.key) + " Summary: " + i.fields.summary.strip() + " Status: " + str(i.fields.status) + " SPs: " + str(int(str(i.fields.customfield_11602)[::-2])))
+            print("Issue: " + i.key.decode() + " Summary: " + i.fields.summary.strip() + " Status: \'" + str(i.fields.status) + "\' SPs: " + str(int(str(i.fields.customfield_11602)[::-2])))
             stringBuffer.write(str(i.key).strip() + ";" + i.fields.summary.strip() + ";" + str(i.fields.status).strip() + ";" + str(int(str(i.fields.customfield_11602)[::-2].strip())) +"\n")
 
             totalSPs = totalSPs + int(str(i.fields.customfield_11602)[::-2])
-
-            if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready to Merge")  or (str(i.fields.status)=="Ready to Test")):
+            
+            if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready To Merge")  or (str(i.fields.status)=="Ready To Test")):
                 completedSPs = completedSPs + int(str(i.fields.customfield_11602)[::-2])
-    except:
-        print("Error in Issue: " + str(i.key) + " -> " + i.fields.summary)
-        try:
-            stringBuffer.write(str(i.key) + ";" + i.fields.summary.strip() +";" + str(i.fields.status) + ";0" + "\n")
-        except:
-            stringBuffer.write(str(i.key) + ";TBD;" + str(i.fields.status) + ";0" + "\n")
+    except Exception as e:
+
+        print("Error in Issue: " + str(i.key) + " -> " + i.fields.summary + " Error: " + str(e))
+
+
+        stringBuffer.write(str(i.key) + ";" + i.fields.summary.strip() +";" + str(i.fields.status) + ";0" + "\n")
+
         errorCount = errorCount + 1
         pass
 

@@ -1,0 +1,230 @@
+Issue;Summary; Status; SPs
+NBSFI-449;Riesgo de Mercado DATAMART - Posicion;In Progress;8
+NBSFI-439;Asumir como liquidado los egresos monetarios de Operaciones del Site de Empresas;Open;3
+NBSFI-437;Consulta por problemas en la importacion de cabeceras;Closed;0
+NBSFI-434;Se cuelga al elegir el lookUp de Cuentas Custodias;Open;0
+NBSFI-433;TBD;Closed;0
+NBSFI-432;TBD;Closed;0
+NBSFI-431;TBD;Awaiting Approval;0
+NBSFI-430;Testing - Numerador Secuencial de comitentes;Closed;8
+NBSFI-429;Desarrollo - Numerador Secuencial de comitentes;Closed;3
+NBSFI-428;Analisis - Numerador Secuencial de comitentes;Awaiting Approval;5
+NBSFI-422;Generar minutas a partir de los Trades que obtenemos de Rofex;In Progress;3
+NBSFI-421;Adaptaciones - Interfaces con Site Empresas - Desarrollo;Closed;5
+NBSFI-420;Libro unificado de Ordenes;Closed;5
+NBSFI-419;Armar un proxy para consultar APIS de Rofex (BO y TRD);Ready To Merge;5
+NBSFI-416;TBD;Closed;0
+NBSFI-415;Adaptacion de Vouchers II - Revisar filtros y campos requeridos;Open;8
+NBSFI-412;TBD;Open;0
+NBSFI-404;TBD;Open;0
+NBSFI-403;Quitar intervinientes de cuentas distintas a tipo 2;Open;5
+NBSFI-401;Adaptar el cliente REST al formato del Dispatcher;Closed;5
+NBSFI-391;Consultas - Soporte por Pruebas de NBSF;Open;0
+NBSFI-381;Estimacion cambio de alcance (CR01) ~ Excel con las adecuaciones solicitadas por los usuarios al entregarse Etapa 1.;Closed;0
+NBSFI-377;TBD;Ready To Approve;0
+NBSFI-375;Integracion Dispatcher System de Macro;Closed;5
+NBSFI-374;Integrar cambios de martin en 2.16;Closed;1
+NBSFI-372;Arreglo en nombre de procesos, settings y depuracion de los que no aplican - dep. datos;In Progress;3
+NBSFI-366;Tareas para implementar / actualizar ambiente en BSF / Soporte pruebas usuarios;Closed;8
+NBSFI-354;Capacitacion de usuarios onsite - funcionalidad ETAPA 1;Closed;0
+NBSFI-353;Cuando se anula un movimiento desde Cobros y Pagos, se toma la misma causal que origino el movimiento;Awaiting Approval;1
+NBSFI-327;Revisar el circuito de Posturas/Licitaciones para enviar debitos anticipados;Open;5
+NBSFI-326;Adaptar el proceso de vencimiento de ordenes para que envie reversos;Closed;3
+NBSFI-303;Entrega ETAPA POST-PRODUCTIVA;Open;0
+NBSFI-302;Entrega ETAPA 2 en testing de usuarios;Open;0
+NBSFI-301;Entrega ETAPA 1 para primer testing de usuarios;Shipped;0
+NBSFI-290;Testing - Interfaz de deuda (Interfaz de relaciones tecnicas);Closed;8
+NBSFI-281;Entrenamiento al personal de mesa sobre integracion unitrade;Closed;0
+NBSFI-280;Armado de la WBS de BSC y BSJ;Open;0
+NBSFI-276;Adaptar bloqueos para debitos anticipados - online (parte 2 de "Interfaz online Creditos/Debitos  y reversas");Closed;3
+NBSFI-267;Agregar el SubTipo de Operacion a la parametria de Causales;Closed;2
+NBSFI-246;Analisis - Interfaz de Deuda;Approved;8
+NBSFI-240;TBD;Closed;0
+NBSFI-238;Incorporar seguridad por grupos (traer de Chubut);Closed;3
+NBSFI-230;Rework Maestro de Especies;Closed;0
+NBSFI-229;Agilizar o corregir Tests de Integracion;Closed;0
+NBSFI-226;Integracion modulo para envio de e-mails;Closed;4
+NBSFI-225;Seguimiento Desarrollo + Coaching + Reuniones Internas;Open;0
+NBSFI-223;Sprint Planning;Open;0
+NBSFI-222;Rofex: Consulta de Operaciones concertadas;Open;3
+NBSFI-221;Rofex: Envio de Ordenes;Open;3
+NBSFI-220;Rofex - Testing;Open;6
+NBSFI-219;Intercambiar Monitor de Siopel y revisar circuito basico minorista y trading;Testing In Progress;5
+NBSFI-218;Mejoras en el manejo de mensajes SIOPEL rechazados;Open;4
+NBSFI-217;Siopel - Testing;Open;9
+NBSFI-216;Vuelco Historico;Open;1
+NBSFI-215;Vuelcos de cliente;Closed;1
+NBSFI-214;Vuelcos Saldos;Closed;4
+NBSFI-213;Vuelco - Testing;Open;6
+NBSFI-212;Libro de caja;Closed;8
+NBSFI-211;Adaptacion de vouchers (logo);Open;5
+NBSFI-210;Libros normativos por Mercado;Open;5
+NBSFI-209;Reporte de liquidaciones pendientes por ENTE Liquidador;Closed;5
+NBSFI-208;Informe CNV de Operaciones de Terceros;Blocked;8
+NBSFI-207;Vouchers & Reportes - Testing;Open;1
+NBSFI-206;Desintegrar online;Open;5
+NBSFI-205;Interfaz online Creditos/Debitos  y reversas;Closed;4
+NBSFI-204;Interfaz Online de Cuentas de Liquidacion;Closed;8
+NBSFI-203;Interfaz Online de clientes;Open;8
+NBSFI-202;Interfaz Online - Testing;Open;51
+NBSFI-201;Int Batch Datos Clientes;Closed;3
+NBSFI-200;Mapeo de Comprobantes;Closed;5
+NBSFI-199;Incorporar plazo de vencimiento a los causales de LEBACS;Closed;3
+NBSFI-198;TBD;Closed;0
+NBSFI-197;Fecha de cierre;Closed;1
+NBSFI-196;Maestro de tenencias;Closed;8
+NBSFI-194;Acreditaciones en cuenta;Closed;5
+NBSFI-193;Historico de movimientos;Closed;8
+NBSFI-192;Maestro de comprobantes;Closed;8
+NBSFI-191;Maestro de especies;Closed;8
+NBSFI-190;Maestro de clientes;Closed;8
+NBSFI-189;Interfaces Diarias - Testing;Closed;31
+NBSFI-188;Testing - Interfaz de Tenencias Anual al 31/12;Open;8
+NBSFI-187;Testing - OpTerm - Intefaz de operaciones a termino;Closed;1
+NBSFI-186;Testing - Riesgo de Mercado UNIDATO;Open;1
+NBSFI-185;Testing - Riesgo de Tasa;Canceled;1
+NBSFI-184;Testing - Riesgo de Mercado DATAMART;Blocked;1
+NBSFI-183;Testing - Siter;Closed;5
+NBSFI-182;TBD;Open;0
+NBSFI-181;Testing - Siscen Mensual;Closed;5
+NBSFI-180;Testing - Siscen Diaria;Closed;3
+NBSFI-179;Interfaces Normativas - Testing;Open;81
+NBSFI-178;Testing - Adaptaciones - Interfaces con Site Empresas;Open;5
+NBSFI-177;Testing - Conciliacion de SALDOS CONTABLES;Open;3
+NBSFI-176;Testing - Incorporar funcionalidad de VP a valuacion y re-categorizacion;Open;5
+NBSFI-175;TBD;Closed;0
+NBSFI-174;Testing - Aviso / reporte de que algo no contabilizo;Closed;2
+NBSFI-173;Testing - Calculo de IVA y Ganancias;Closed;4
+NBSFI-172;Testing - Mails a Clientes + envio a Vision Integral;Closed;5
+NBSFI-171;Testing - Validacion asientos desbalanceados;Closed;5
+NBSFI-170;Testing - Nro MEP y Nro Swift;Open;2
+NBSFI-169;Testing - Fideicomisos;Closed;1
+NBSFI-168;Testing - Alerta para cierre;Canceled;1
+NBSFI-167;Testing - Nuevos mensajes MEP;Open;2
+NBSFI-166;GAP - Testing;Open;72
+NBSFI-164;Testing - Cabeceras contables;Closed;3
+NBSFI-163;Testing - TIR y recategorizacion;Closed;5
+NBSFI-162;Testing - Integracion MEP;Closed;5
+NBSFI-161;Merge de funcionalidades - Testing;Open;71
+NBSFI-160;TBD;Ready To Approve;0
+NBSFI-159;TBD;Ready To Approve;0
+NBSFI-158;TBD;Open;0
+NBSFI-156;TBD;Approved;0
+NBSFI-155;TBD;Awaiting Approval;0
+NBSFI-154;TBD;Ready To Approve;0
+NBSFI-153;TBD;Approved;0
+NBSFI-152;TBD;Ready To Approve;0
+NBSFI-151;TBD;Approved;0
+NBSFI-150;TBD;Ready To Approve;0
+NBSFI-149;TBD;Approved;0
+NBSFI-148;TBD;Ready To Approve;0
+NBSFI-147;TBD;Canceled;0
+NBSFI-146;TBD;Ready To Approve;0
+NBSFI-145;TBD;Approved;0
+NBSFI-144;TBD;Ready To Approve;0
+NBSFI-143;TBD;Approved;0
+NBSFI-142;TBD;Approved;0
+NBSFI-141;TBD;Open;0
+NBSFI-140;TBD;Open;0
+NBSFI-139;TBD;Open;0
+NBSFI-138;TBD;Awaiting Approval;0
+NBSFI-137;TBD;Awaiting Approval;0
+NBSFI-136;TBD;Ready To Approve;0
+NBSFI-135;TBD;Approved;0
+NBSFI-134;TBD;Awaiting Approval;0
+NBSFI-133;TBD;Open;0
+NBSFI-132;TBD;Approved;0
+NBSFI-131;TBD;Canceled;0
+NBSFI-130;TBD;Open;0
+NBSFI-129;TBD;Approved;0
+NBSFI-128;TBD;Approved;0
+NBSFI-126;TBD;Open;0
+NBSFI-125;Merge Functionality - Desarrollo;Open;4
+NBSFI-124;Rofex - Desarrollo;Open;6
+NBSFI-123;TBD;Open;0
+NBSFI-122;TBD;Open;0
+NBSFI-121;Siopel - Desarrollo;Open;4
+NBSFI-120;Vuelco - Desarrollo;Open;1
+NBSFI-118;Vouchers y reportes - Desarrollo;Open;9
+NBSFI-117;TBD;Open;0
+NBSFI-116;TBD;Open;0
+NBSFI-115;GAP - Desarrollo;Open;51
+NBSFI-114;Interfaces Normativas - Analisis;Open;81
+NBSFI-113;TBD;Approved;0
+NBSFI-112;Analisis - Interfaz Online de clientes;Open;5
+NBSFI-111;Emulador SOAP;Open;1
+NBSFI-110;TBD;Approved;0
+NBSFI-109;TBD;Approved;0
+NBSFI-108;Analisis - Mapeo de comprobantes;Approved;1
+NBSFI-107;Interfaz batch datos clientes;Closed;3
+NBSFI-106;Fecha de cierre;Closed;1
+NBSFI-105;Maestro de tenencias;Closed;8
+NBSFI-104;Incorporacion de plazo de vencimiento a causales lebacs;Closed;5
+NBSFI-103;Mapeo de comprobantes;Closed;8
+NBSFI-102;Interfaz de deuda;Closed;3
+NBSFI-101;Gestion de comitentes offline sin CORE;Closed;1
+NBSFI-100;Acreditaciones en cuenta;Closed;8
+NBSFI-99;Maestro de comprobantes;Closed;2
+NBSFI-98;Maestro de especies;Closed;8
+NBSFI-97;Interfaces Diarias - Desarrollo;Open;8
+NBSFI-96;Interfaces Normativas - Desarrollo;Open;91
+NBSFI-95;Interfaces Diarias - Analisis;Open;11
+NBSFI-94;TBD;Approved;0
+NBSFI-93;TBD;Approved;0
+NBSFI-92;TBD;Approved;0
+NBSFI-91;TBD;Approved;0
+NBSFI-90;TBD;Approved;0
+NBSFI-89;TBD;Approved;0
+NBSFI-88;TBD;Approved;0
+NBSFI-87;TBD;Approved;0
+NBSFI-86;TBD;Closed;0
+NBSFI-85;Emulador Rest;Closed;1
+NBSFI-83;Seguimiento - Project Management;Open;0
+NBSFI-82;Interfaz de Tenencias Anual al 31/12;Open;8
+NBSFI-81;OpTerm - Intefaz de operaciones a termino;Canceled;5
+NBSFI-80;Riesgo de Mercado UNIDATO;Open;1
+NBSFI-78;Incorporar funcionalidad de VP a valuacion y re-categorizacion;Open;8
+NBSFI-77;Libros normativos por Mercado;Closed;8
+NBSFI-76;Reporte de liquidaciones pendientes por ENTE Liquidador;Closed;5
+NBSFI-75;Informe CNV de Operaciones de Terceros;Closed;5
+NBSFI-73;Intercambiar Monitor de Siopel;Closed;3
+NBSFI-72;TBD;Closed;0
+NBSFI-71;Rofex: Consulta de Operaciones concertadas;Closed;3
+NBSFI-70;Rofex: Envio de Ordenes;Closed;0
+NBSFI-69;Conciliacion de SALDOS CONTABLES;Open;1
+NBSFI-68;Mejoras en el manejo de mensajes SIOPEL rechazados;Closed;1
+NBSFI-67;TBD;Closed;0
+NBSFI-66;Aviso / reporte de que algo no contabilizo;Closed;3
+NBSFI-65;Calculo de IVA y Ganancias;Closed;8
+NBSFI-63;Mails a Clientes + envio a Vision Integral;Closed;4
+NBSFI-62;Vuelco Historico;Open;8
+NBSFI-61;Vuelcos de cliente;Closed;8
+NBSFI-60;Vuelcos Saldos;Closed;5
+NBSFI-59;Libro de caja;Closed;3
+NBSFI-58;Adaptacion de vouchers (logo);Ready To Merge;5
+NBSFI-56;Interfaz online Creditos/Debitos  y reversas;Closed;2
+NBSFI-55;Interfaz Online de Cuentas de Liquidacion;Closed;3
+NBSFI-54;Interfaz Online de clientes;Open;1
+NBSFI-46;Riesgo de Tasa;Canceled;1
+NBSFI-45;Riesgo de Mercado DATAMART - Instrumentos;Closed;5
+NBSFI-44;Siter;Closed;5
+NBSFI-43;TBD;Open;0
+NBSFI-42;Siscen Mensual;Closed;8
+NBSFI-41;Siscen Diaria;Closed;3
+NBSFI-40;Validacion asientos desbalanceados;Closed;5
+NBSFI-39;Nro MEP y Nro Swift;Open;3
+NBSFI-38;Fideicomisos;Closed;3
+NBSFI-37;Alerta para cierre;Canceled;2
+NBSFI-36;Nuevos mensajes MEP;Open;3
+NBSFI-27;Interfaz Online - Desarrollo;Open;61
+NBSFI-26;Desintegrar online Cuentas Liquidacion/Clientes;Closed;5
+NBSFI-24;Cabeceras contables;Closed;3
+NBSFI-23;TIR y recategorizacion - NIIF;Closed;1
+NBSFI-22;Integracion MEP;Closed;5
+NBSFI-20;Estimacion de Story Points de desarrollo para el proyecto entero;Closed;0
+NBSFI-16;TBD;Open;0
+NBSFI-14;Definicion Circuito Rofex - interfaces online;Closed;3
+NBSFI-9;Historico de Movimientos;Closed;8
+NBSFI-8;Maestro de Clientes;Closed;8
+NBSFI-7;TBD;Closed;0
+NBSFI-1;Reuniones Internas y Externas;Open;0

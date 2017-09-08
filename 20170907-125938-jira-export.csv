@@ -1,0 +1,85 @@
+Issue, Summary, Status, SPs
+TRINT-114,Valores incorrectos de cuentas monetarias y custodia,Ready To Test,2
+TRINT-112,Sincronizacion de baja y modificacion de REPOS (UniTrade),Open,5
+TRINT-111,Sincronizacion de baja y modificacion de REPOS (mesa),In Progress,3
+TRINT-110,Configurar conexion entre ambientes de testing,Open,3
+TRINT-105,TBD,Ready To Test,0
+TRINT-101,TBD,Closed,0
+TRINT-100,No se borran los mensajes de error en la ventana Mensajes de Error una vez solucionados,Ready To Merge,1
+TRINT-99,TBD,Ready To Merge,0
+TRINT-98,TBD,Ready To Merge,0
+TRINT-92,TBD,Closed,0
+TRINT-91,TBD,Blocked,0
+TRINT-90,TBD,Closed,0
+TRINT-88,No ingresan operaciones de FX del tipo 5-5 a Mesa desde Web Service,Closed,1
+TRINT-87,TBD,Closed,0
+TRINT-86,TBD,Closed,0
+TRINT-85,TBD,Closed,0
+TRINT-83,TBD,Closed,0
+TRINT-82,Wb al intentar ver las referencias en la ventana Mensajes de Siopel - Trading Room en Unitrade,Closed,1
+TRINT-80,Testing - Mov. BackOffice,Open,4
+TRINT-79,Testing - Repo,Open,3
+TRINT-78,TBD,Open,0
+TRINT-76,TBD,Closed,0
+TRINT-75,TBD,Closed,0
+TRINT-74,Operaciones de Trading en Siopel entren automaticamente a Unitrade,Closed,5
+TRINT-73,Testing Operaciones de FX,Open,4
+TRINT-72,TBD,Closed,0
+TRINT-71,Sincronizacion de movimientos en Unitrade,In Progress,8
+TRINT-70,Ventana de sincronizacion para operaciones,Closed,5
+TRINT-69,TBD,Open,0
+TRINT-68,TBD,Ready To Test,0
+TRINT-67,TBD,Closed,0
+TRINT-66,Ventana de errores para movimientos y operaciones(UniTrade),Closed,8
+TRINT-65,TBD,Closed,0
+TRINT-63,TBD,Closed,0
+TRINT-62,TBD,Closed,0
+TRINT-61,TBD,Closed,0
+TRINT-60,TBD,Closed,0
+TRINT-59,TBD,Closed,0
+TRINT-55,TBD,Open,0
+TRINT-54,TBD,Open,0
+TRINT-53,TBD,Open,0
+TRINT-52,TBD,Open,0
+TRINT-51,WS consulta movimientos BackOffice UniTrade,Open,5
+TRINT-50,WS alta Mov. BackOffice de Mesa a UniTrade,Ready To Merge,3
+TRINT-49,WS alta Mov. BackOffice MEsa,Open,3
+TRINT-48,Sincronizar-> Cartera propia,Open,1
+TRINT-47,Sincronizar Masiva Alta,Closed,3
+TRINT-46,WS alta de Repos en UniTrade,Closed,8
+TRINT-45,WS consulta de Repos Mesa,Closed,8
+TRINT-44,WS alta Repo Mesa,Closed,3
+TRINT-43,Capturar mensajes de Repo en UT,Closed,3
+TRINT-42,TBD,Closed,0
+TRINT-41,WS modificacion Operacion Titulos UniTrade,Closed,8
+TRINT-40,TBD,Closed,0
+TRINT-39,MESA: WS Consulta,Closed,8
+TRINT-38,Separar Logica Cartera/Clientes (Unitrade),Closed,5
+TRINT-37,TBD,Closed,0
+TRINT-36,WS Alta de operaciones de titulos,Closed,3
+TRINT-35,WS consulta de mensajes de Siopel FX - Unitrade,Closed,5
+TRINT-34,WS: consulta de Mesa a FX,Closed,1
+TRINT-33,Crear bandeja de mensajes de Siopel para enviar a TR - Unitrade,Closed,1
+TRINT-32,TBD,Open,0
+TRINT-31,TBD,Open,0
+TRINT-30,TBD,Open,0
+TRINT-29,Manejo modificaicon Call en UniTrade,Canceled,3
+TRINT-28,Revisar ABM calls / Renovacion (UNITRADE),Canceled,5
+TRINT-27,Proceso sincronizar masivo de Calls,Canceled,3
+TRINT-26,Manejo WS anulacion Calls UniTrade,Canceled,3
+TRINT-25,WS anulacion Calls - UniTrade,Canceled,5
+TRINT-24,WS anulacion Calls - Mesa,Canceled,5
+TRINT-23,TBD,Canceled,0
+TRINT-22,Renovacion de Calls,Canceled,1
+TRINT-21,         Manejo estado sincronizacion,Canceled,8
+TRINT-20,         WS consulta estado (movimiento) UT,Canceled,8
+TRINT-19,WS consulta estado (movimiento) (Mesa),Canceled,8
+TRINT-18,Ws alta Call UT,Canceled,3
+TRINT-17,Adaptar dashboard call,Canceled,8
+TRINT-16,WS Alta Call Mesa,Canceled,3
+TRINT-15,Agregar banco en el dispatcher,Open,5
+TRINT-14,TBD,Open,0
+TRINT-13,Desacoplar OMS,Closed,5
+TRINT-12,TBD,Closed,0
+TRINT-11,TBD,Open,0
+TRINT-2,Integracion de modulos de interfaces desarrollados para ruteador,Closed,3
