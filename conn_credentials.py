@@ -58,7 +58,7 @@ issues = jira.search_issues("project=" + __PROJECT__,startAt=0, maxResults=issue
 completedSPs = 0
 totalSPs = 0
 totalIssues = 0
-errorCount=0
+errorCount = 0
 csvString=""
 
 print ("Total amount issues available: " + str(issues.total))
