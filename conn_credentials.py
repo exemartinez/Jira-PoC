@@ -109,6 +109,9 @@ for i in issues:
         errorCount = errorCount + 1
         pass
 
+print("\n"*3)
+print("-"*80)
+print("\n")
 print("Total issues: " + str(totalIssues))
 print("Completed Development SPs: " + str(completedDevelopmentSPs))
 print("Completed Analysis SPs: " + str(completedAnalysisSPs))
