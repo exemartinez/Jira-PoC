@@ -110,8 +110,8 @@ for i in issues:
         pass
 
 print("Total issues: " + str(totalIssues))
-print("Completed Devs SPs: " + str(completedDevelopmentSPs))
-print("Completed Devs SPs: " + str(completedAnalysisSPs))
+print("Completed Development SPs: " + str(completedDevelopmentSPs))
+print("Completed Analysis SPs: " + str(completedAnalysisSPs))
 print("Total SPs: " + str(totalSPs))
 print("Error records: " + str(errorCount))
 
