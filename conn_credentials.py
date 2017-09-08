@@ -12,7 +12,10 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 #Constants
-__PROJECT__='BSTI'
+if (len(sys.argv)<2):
+    __PROJECT__='BSTI'
+else:
+    __PROJECT__=sys.argv[1]
 
 #Common functions
 def getCustomFieldID(name):
@@ -60,6 +63,7 @@ totalSPs = 0
 totalIssues = 0
 errorCount = 0
 csvString=""
+storyPoints = ""
 
 print ("Total amount issues available: " + str(issues.total))
 
@@ -77,21 +81,28 @@ for i in issues:
     #print(getCustomFieldID("Story Points"))
 
     try:
-        if(i.fields.customfield_11602!=None):
-
-            print("Issue: " + i.key.decode() + " Summary: " + i.fields.summary.strip() + " Status: \'" + str(i.fields.status) + "\' SPs: " + str(int(str(i.fields.customfield_11602)[::-2])))
-            stringBuffer.write(str(i.key).strip() + ";" + i.fields.summary.strip() + ";" + str(i.fields.status).strip() + ";" + str(int(str(i.fields.customfield_11602)[::-2].strip())) +"\n")
-
-            totalSPs = totalSPs + int(str(i.fields.customfield_11602)[::-2])
+     
+        if ((str(i.fields.issuetype) == "Testing") or (str(i.fields.issuetype) == "Analysis") or (str(i.fields.issuetype) == "Development")):
             
-            if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready To Merge")  or (str(i.fields.status)=="Ready To Test")):
-                completedSPs = completedSPs + int(str(i.fields.customfield_11602)[::-2])
+            storyPoints = str(i.fields.customfield_11602)[::-2]
+            
+            if (str(i.fields.customfield_11602) != "None"):
+             
+                print("Issue: " + i.key.decode() + " Type: " + str(i.fields.issuetype) + " Summary: " + i.fields.summary.strip() + " Status: \'" + str(i.fields.status) + "\' SPs: " + storyPoints)
+                
+                stringBuffer.write(str(i.key).strip() + ";" + str(i.fields.issuetype) +  ";" + i.fields.summary.strip() + ";" + str(i.fields.status).strip() + ";" + storyPoints +"\n")
+                
+                totalSPs = totalSPs + int(str(i.fields.customfield_11602)[::-2])
+                
+                if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready To Merge")  or (str(i.fields.status)=="Ready To Test")):
+                    completedSPs = completedSPs + int(storyPoints)
+                    
     except Exception as e:
 
         print("Error in Issue: " + str(i.key) + " -> " + i.fields.summary + " Error: " + str(e))
 
 
-        stringBuffer.write(str(i.key) + ";" + i.fields.summary.strip() +";" + str(i.fields.status) + ";0" + "\n")
+        stringBuffer.write(str(i.key) + ";" + str(i.fields.issuetype) +  ";" +  i.fields.summary.strip() +";" + str(i.fields.status) + ";0" + "\n")
 
         errorCount = errorCount + 1
         pass
