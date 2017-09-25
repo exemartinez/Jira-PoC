@@ -18,21 +18,35 @@ else:
     __PROJECT__=sys.argv[1]
 
 #Common functions
+
 def getCustomFieldID(name):
-    '''Getting all the custom fields ID's'''
+    '''Getting all the current custom fields ID's and dump it to a CSV file for revision.'''
     # Fetch all fields
     allfields=jira.fields()
     # Make a map from field name -> field id
     nameMap = {field['name']:field['id'] for field in allfields}
 
-    try:
-        result=nameMap[name]
-    except:
-        return None
-    #Well known codes:
-        #customfield_11602 <- Story Points code for the custom field.
+    stringBuffer = StringIO()
+    stringBuffer.write("Field Name;Code\n")
 
-    return result
+    for field in allfields:
+        stringBuffer.write(field['name'] + ";" + field['id'] + "\n")
+
+    getSendToCSVFile(stringBuffer.getvalue())
+       
+    if (name!=None):
+        try:
+            result=nameMap[name]
+        except:
+            return None
+        #Well known codes:
+            #customfield_11602 <- Story Points code for the custom field.
+            #customfield_11606 <- Epic Link.
+            #customfield_11607 <- Epic Name
+
+        return result
+    else:
+        return None
 
 def getSendToCSVFile(fileStr):
     '''Sends the String to a file'''
@@ -52,6 +66,7 @@ jira = JIRA(options, basic_auth=('emartinez', 'itT85278952'))# a username/passwo
 #props = jira.application_properties()
 # Find all issues reported by the admin
 
+
 #Check how many files are required:
 issues = jira.search_issues("project=" + __PROJECT__,startAt=0, maxResults=0)
 issues = jira.search_issues("project=" + __PROJECT__,startAt=0, maxResults=issues.total)
@@ -66,6 +81,9 @@ errorCount = 0
 csvString=""
 storyPoints = ""
 
+#getCustomFieldID(None)
+#time.sleep(1)
+
 print ("Total amount issues available: " + str(issues.total))
 
 #Searching for the issues and preparing the excel file for processing.
@@ -78,7 +96,7 @@ for i in issues:
 
     #print(getCustomFieldID("Story Point"))
     #print(getCustomFieldID("Story Points"))
-
+    
     try:
         
         if ((str(i.fields.issuetype) == "Testing") or (str(i.fields.issuetype) == "Analysis") or (str(i.fields.issuetype) == "Development")):
@@ -105,6 +123,11 @@ for i in issues:
                         completedDevelopmentSPs = completedDevelopmentSPs + float(storyPoints)
                     else:
                         completedAnalysisSPs = completedAnalysisSPs + float(storyPoints)
+        else:
+            print("Issue: " + i.key.decode() + " Type: " + str(i.fields.issuetype) + " Summary: " + i.fields.summary.strip() + " Status: \'" + str(i.fields.status) + "\' SPs: " + storyPoints)
+            if (i.fields.timespent!=None):
+                print(" Time Spent:" + str(i.fields.timespent/3600))
+
                     
     except Exception as e:
 
