@@ -13,7 +13,7 @@ sys.setdefaultencoding('utf-8')
 
 #Constants
 if (len(sys.argv)<2):
-    __PROJECT__='BSTI'
+    __PROJECT__='MACRORUT2'
 else:
     __PROJECT__=sys.argv[1]
 
@@ -88,9 +88,12 @@ inprogressAnalysisSPs=0
 totalDevelopmentSPs = 0 
 totalAnalysisSPs = 0
 totalSPs = 0
+totalHHSpentDev = 0
+totalHHSpentAnalysis = 0
 totalHHSpent = 0
 totalIssues = 0
 errorCount = 0
+maxSprints = 0
 csvString=""
 storyPoints = ""
 
@@ -132,28 +135,34 @@ for i in issues:
                                              
                 totalSPs = totalSPs + float(storyPoints)
 
-                #Summing the analysis and development story points by each side. #TODO:Needed refactoring.
-                if ((str(i.fields.issuetype) == "Testing") or (str(i.fields.issuetype) == "Analysis")):
-                    totalAnalysisSPs += float(storyPoints)
-                elif (str(i.fields.issuetype) == "Development"):
-                    totalDevelopmentSPs = totalDevelopmentSPs + float(storyPoints)
-                
-                if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready To Merge")  or (str(i.fields.status)=="Ready To Test")):
+                if (str(i.fields.status)!='Canceled'):
+                    #Summing the analysis and development story points by each side. #TODO:Needed refactoring.
+                    if ((str(i.fields.issuetype) == "Testing") or (str(i.fields.issuetype) == "Analysis")):
+                        totalAnalysisSPs += float(storyPoints)
+                        totalHHSpentAnalysis += timespent
+
+                    elif ((str(i.fields.issuetype) == "Development")):
+                        totalDevelopmentSPs += float(storyPoints)
+                        totalHHSpentDev += timespent
                     
-                    if (str(i.fields.issuetype) == "Development"):
-                        completedDevelopmentSPs = completedDevelopmentSPs + float(storyPoints)
-                    else:
-                        completedAnalysisSPs = completedAnalysisSPs + float(storyPoints)
-                elif (str(i.fields.status)!='Open'):
-                    if (str(i.fields.issuetype) == "Development"):
-                        inprogressDevelopmentSPs += float(storyPoints)
-                    else:
-                        inprogressAnalysisSPs += float(storyPoints)
+                    if ((str(i.fields.status)=='Approved') or (str(i.fields.status)=='Closed') or (str(i.fields.status)=="Ready To Merge")  or (str(i.fields.status)=="Ready To Test")):
+                        
+                        if (str(i.fields.issuetype) == "Development"):
+                            completedDevelopmentSPs = completedDevelopmentSPs + float(storyPoints)
+                        else:
+                            completedAnalysisSPs = completedAnalysisSPs + float(storyPoints)
+                    elif (str(i.fields.status)!='Open'):
+                        if (str(i.fields.issuetype) == "Development"):
+                            inprogressDevelopmentSPs += float(storyPoints)
+                        else:
+                            inprogressAnalysisSPs += float(storyPoints)
 
         totalHHSpent+=timespent
+        numSprints = len(i.fields.customfield_11605) if i.fields.customfield_11605 != None else 0
+        maxSprints = numSprints if numSprints > maxSprints else maxSprints
 
         #Getting the string output (It's a CSV file that will be consumed by excel)
-        stringBuffer.write(str(i.key).strip() + ";" + str(i.fields.issuetype) +  ";" + i.fields.summary.strip() + ";" + str(i.fields.status).strip() + ";" + storyPoints + ";" + epicName + ";" + str(timespent) + ";" + str(i.fields.customfield_11605) + ";" + str(len(i.fields.customfield_11605) if i.fields.customfield_11605 != None else 0)+ ";" + str(i.fields.created) + "\n")
+        stringBuffer.write(str(i.key).strip() + ";" + str(i.fields.issuetype) +  ";" + i.fields.summary.strip() + ";" + str(i.fields.status).strip() + ";" + storyPoints + ";" + epicName + ";" + str(timespent) + ";" + str(i.fields.customfield_11605) + ";" + str(numSprints)+ ";" + str(i.fields.created) + "\n")
                     
     except Exception as e:
 
@@ -175,7 +184,10 @@ print("Completed Analysis SPs: " + str(completedAnalysisSPs) + "/" + str(totalAn
 print("In Progress Development SPs: " + str(inprogressDevelopmentSPs) + "/" + str(totalDevelopmentSPs))
 print("In Progress Analysis SPs: " + str(inprogressAnalysisSPs) + "/" + str(totalAnalysisSPs))
 print("Total SPs: " + str(totalSPs))
+print("Total HH spent Development: " +str(totalHHSpentDev))
+print("Total HH spent Analysis: " +str(totalHHSpentAnalysis))
 print("Total HH spent: " +str(totalHHSpent))
+print("Total Closed Sprints: " +str(maxSprints))
 print("Error records: " + str(errorCount))
 
 stringBuffer = StringIO()
@@ -185,7 +197,10 @@ stringBuffer.write("Completed Analysis SPs; " + str(completedAnalysisSPs) + "/" 
 stringBuffer.write("In Progress SPs; " + str(inprogressDevelopmentSPs) + "/" + str(totalDevelopmentSPs)  + ";" + str(inprogressDevelopmentSPs/totalDevelopmentSPs)  + "\n")
 stringBuffer.write("In Progress SPs; " + str(inprogressAnalysisSPs) + "/" + str(totalAnalysisSPs) + ";" + str(inprogressAnalysisSPs/totalAnalysisSPs) + "\n")
 stringBuffer.write("Total SPs; " + str(totalSPs) + "\n")
+stringBuffer.write("Total HH spent Development: " +str(totalHHSpentDev) + "\n")
+stringBuffer.write("Total HH spent Analysis: " +str(totalHHSpentAnalysis) + "\n")
 stringBuffer.write("Total HH spent; " +str(totalHHSpent) + "\n")
+stringBuffer.write("Total Closed Sprints: " +str(maxSprints) + "\n")
 stringBuffer.write("Error records; " + str(errorCount) + "\n")
 
 getSendToOutputFile(stringBuffer.getvalue())
