@@ -65,7 +65,7 @@ def getSendToOutputFile(fileStr):
 # for details.
 
 options = {'server': 'http://issues.mercap.net:8080'}
-jira = JIRA(options, basic_auth=('emartinez', 'itT85278952'))# a username/password tuple
+jira = JIRA(options, basic_auth=('emartinez', ''))# a username/password tuple
 
 # Get the mutable application properties for this server (requires
 # jira-system-administrators permission)
@@ -187,7 +187,7 @@ print("Total SPs: " + str(totalSPs))
 print("Total HH spent Development: " +str(totalHHSpentDev))
 print("Total HH spent Analysis: " +str(totalHHSpentAnalysis))
 print("Total HH spent: " +str(totalHHSpent))
-print("Total Closed Sprints: " +str(maxSprints))
+print("Total Closed Sprints: " +str(maxSprints)) #TODO: OJO! esta metrica esta dando ERRONEA!!!
 print("Error records: " + str(errorCount))
 
 stringBuffer = StringIO()
