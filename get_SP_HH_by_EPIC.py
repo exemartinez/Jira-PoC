@@ -13,9 +13,12 @@ sys.setdefaultencoding('utf-8')
 
 #Constants
 if (len(sys.argv)<2):
-    __PROJECT__='MACRORUT2'
+    print ("Not enough parameters.")
+    sys.exit()
 else:
     __PROJECT__=sys.argv[1]
+    __USERID__=sys.argv[2]
+    __PASS__=sys.argv[3]
 
 #Common functions
 
@@ -65,7 +68,7 @@ def getSendToOutputFile(fileStr):
 # for details.
 
 options = {'server': 'http://issues.mercap.net:8080'}
-jira = JIRA(options, basic_auth=('emartinez', ''))# a username/password tuple
+jira = JIRA(options, basic_auth=(__USERID__, __PASS__))# a username/password tuple
 
 # Get the mutable application properties for this server (requires
 # jira-system-administrators permission)
