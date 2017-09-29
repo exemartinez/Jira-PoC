@@ -134,11 +134,10 @@ for i in issues:
             
             storyPoints = str(i.fields.customfield_11602)
 
-            if (str(i.fields.customfield_11602) != "None"):
-                                             
-                totalSPs = totalSPs + float(storyPoints)
+            if ((str(i.fields.customfield_11602) != "None") and (str(i.fields.status)!='Canceled')):
 
-                if (str(i.fields.status)!='Canceled'):
+                    totalSPs = totalSPs + float(storyPoints)
+
                     #Summing the analysis and development story points by each side. #TODO:Needed refactoring.
                     if ((str(i.fields.issuetype) == "Testing") or (str(i.fields.issuetype) == "Analysis")):
                         totalAnalysisSPs += float(storyPoints)
@@ -195,10 +194,10 @@ print("Error records: " + str(errorCount))
 
 stringBuffer = StringIO()
 stringBuffer.write("Total issues; " + str(totalIssues) + "\n")
-stringBuffer.write("Completed Development SPs; " + str(completedDevelopmentSPs) + "/" + str(totalDevelopmentSPs) + ";" + str(completedDevelopmentSPs/totalDevelopmentSPs) + "\n")
-stringBuffer.write("Completed Analysis SPs; " + str(completedAnalysisSPs) + "/" + str(totalAnalysisSPs) + ";" + str(completedAnalysisSPs/totalAnalysisSPs) + "\n")
-stringBuffer.write("In Progress SPs; " + str(inprogressDevelopmentSPs) + "/" + str(totalDevelopmentSPs)  + ";" + str(inprogressDevelopmentSPs/totalDevelopmentSPs)  + "\n")
-stringBuffer.write("In Progress SPs; " + str(inprogressAnalysisSPs) + "/" + str(totalAnalysisSPs) + ";" + str(inprogressAnalysisSPs/totalAnalysisSPs) + "\n")
+stringBuffer.write("Completed Development SPs; " + str(completedDevelopmentSPs) + "/" + str(totalDevelopmentSPs) + ";" + str(completedDevelopmentSPs/(totalDevelopmentSPs if (totalDevelopmentSPs!=0) else 1)) + "\n")
+stringBuffer.write("Completed Analysis SPs; " + str(completedAnalysisSPs) + "/" + str(totalAnalysisSPs) + ";" + str(completedAnalysisSPs/(totalAnalysisSPs if (totalAnalysisSPs!=0) else 1)) + "\n")
+stringBuffer.write("In Progress SPs; " + str(inprogressDevelopmentSPs) + "/" + str(totalDevelopmentSPs)  + ";" + str(inprogressDevelopmentSPs/(totalDevelopmentSPs if (totalDevelopmentSPs!=0) else 1)) + "\n")
+stringBuffer.write("In Progress SPs; " + str(inprogressAnalysisSPs) + "/" + str(totalAnalysisSPs) + ";" + str(inprogressAnalysisSPs/(totalAnalysisSPs if (totalAnalysisSPs!=0) else 1)) + "\n")
 stringBuffer.write("Total SPs; " + str(totalSPs) + "\n")
 stringBuffer.write("Total HH spent Development: " +str(totalHHSpentDev) + "\n")
 stringBuffer.write("Total HH spent Analysis: " +str(totalHHSpentAnalysis) + "\n")
