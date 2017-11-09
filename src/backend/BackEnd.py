@@ -2,6 +2,8 @@
 # username and password over HTTP BASIC authentication.
 
 from jira import JIRA
+import logging
+import sqlite3 as sqlite
 from cStringIO import StringIO
 import ConfigParser 
 import time
@@ -15,9 +17,184 @@ __INI_FILE__='..\\..\\properties.ini'
 #  System Codification.
 #********************************
 
-'''TODO: WATCH OUT THIS LINES ~ THESE COULD BROKE THE ENTIRE CODE; FIND SOME OTHER WAY TO ENCONDE THE STRINGS.'''
+#TODO: WATCH OUT THIS LINES ~ THESE COULD BROKE THE ENTIRE CODE; FIND SOME OTHER WAY TO ENCONDE THE STRINGS.
 reload(sys)
-#sys.setdefaultencoding('utf-8')
+sys.setdefaultencoding('utf-8')
+
+'''
+The system management classes goes here.
+'''
+class LogMngr():
+
+    logger = None
+
+    '''
+    Constructor initializes the base logging configuration.
+    '''
+    def __init__(self, logger_name):
+
+        self.logger = logging.getLogger(logger_name)
+        self.logger.setLevel(logging.INFO)
+        #fh = logging.StreamHandler() #this is to print it in the common console.
+        fh = logging.FileHandler('importing_database_data.log')
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        fh.setFormatter(formatter)
+        self.logger.addHandler(fh)
+
+    '''
+    Prints INFO kind of data.
+    '''
+    def info(self, valor):
+        self.logger.info(valor)
+
+    '''
+    Prints ERRORS kind of data.
+    '''
+    def error(self, valor):
+        self.logger.info(valor)
+
+    '''
+    Prints DEBUG kind of data.
+    '''
+    def debug(self, valor):
+        self.logger.debug(valor)
+        
+
+class DAO (object):
+
+    SQLITE_CONSTRAINT_UNIQUE = 2067
+    SQLITE_CONSTRAINT = 19
+    SQLITE_ERROR = 1
+    SQLITE_OK = 0
+
+    log = LogMngr("database_transactions")
+
+    '''
+    Updates a contact with new data into the database
+    '''
+    def exec_upd_single_contacto(self, contacto):
+
+        try:
+
+            result = self.cursor.execute("update contactos set nombre = ?, apellido = ?, email = ?, compania = ?, posicion = ?, tipo = ? where email = ?", (contacto.getNombre(), contacto.getApellido(), contacto.getEmail(), contacto.getCompania(), contacto.getPosicion(), contacto.getTipo(), contacto.getEmail()))
+            self.connection.commit()
+
+        except sqlite.IntegrityError as er:
+            self.log.error("Database Error: " + str(er.args))
+            if (str(er.message)[:6]=="UNIQUE"):
+                return self.SQLITE_CONSTRAINT_UNIQUE #Unique constraint failed.
+            else:
+                return self.SQLITE_CONSTRAINT
+
+        except sqlite.Error as er:
+            self.log.error("Database Error: " + er.message)
+            self.log.error("The database insert failed with contacto: " + contacto.getNombre() + " " + contacto.getApellido())
+            self.connection.rollback()
+            return self.SQLITE_ERROR #SQLite error or missing database
+
+        return self.SQLITE_OK #sqlite OK! yey!
+
+    '''
+    Inserts a new contact into the database
+    '''
+    def exec_new_single_contacto(self, contacto):
+
+        try:
+
+            result = self.cursor.execute("insert into contactos (nombre, apellido, email, compania, posicion, tipo) values (?, ?, ?, ?, ?, ?)", (contacto.getNombre(), contacto.getApellido(), contacto.getEmail(), contacto.getCompania(), contacto.getPosicion(), contacto.getTipo(),))
+            self.connection.commit()
+
+        except sqlite.IntegrityError as er:
+            self.log.error("Database Error: " + str(er.args))
+            if (str(er.message)[:6]=="UNIQUE"):
+                return self.SQLITE_CONSTRAINT_UNIQUE #Unique constraint failed.
+            else:
+                return self.SQLITE_CONSTRAINT
+
+        except sqlite.Error as er:
+            self.log.error("Database Error: " + er.message)
+            self.log.error("The database insert failed with contacto: " + contacto.getNombre() + " " + contacto.getApellido())
+            self.connection.rollback()
+            return 1 #SQLite error or missing database
+
+        return 0 #sqlite OK! yey!
+
+    def exec_delete_tipo_contacto(self, tipo):
+        '''
+        Deletes all the contacto's records with the given tipo.
+        '''
+        try:
+
+            self.cursor.execute("delete from contactos where tipo=?", (str(tipo),))
+            self.connection.commit()
+
+        except:
+            self.log.error("The database deletion by TIPO failed with TIPO: " + str(tipo))
+            self.connection.rollback()
+            return False
+
+        return True
+
+    def exec_get_contacto_exists_byCompania(self, compania):
+        '''
+        Returns one, single sub categoria by its URL
+        '''
+        self.cursor.execute("select * from contactos where compania=?", (compania,))
+        return self.cursor.fetchone()
+
+    def exec_get_contactos_exists_byEmail(self, email):
+        '''
+        Returns one, single contacto by its URL
+        '''
+        self.cursor.execute("select * from contactos where email=?", (email,))
+        result = self.cursor.fetchone()
+
+        self.log.debug("search ---- " + str(result))
+        return result
+
+    def exec_get_all_contactos(self):
+        '''
+        Returns every categoria that is in place (full scan)
+        '''
+        self.log.debug("Fetching...")
+        self.cursor.execute("select id, nombre, apellido, email, compania, posicion, tipo from contactos")
+
+        return self.cursor.fetchall()
+
+    def textualizeMail(self, email):
+        '''Replaces all the special characters for any operation system to deal with the database fiel name eagerly'''
+
+        mailtxt = str(email)
+
+        mailtxt=mailtxt.replace("@","_AT_")
+        mailtxt=mailtxt.replace(".","_DOT_")
+
+        return mailtxt
+
+    def open_connection(self, userName):
+        '''
+        Sets the due connections to the data stores.
+        '''
+
+        self.log.debug("Initiating database")
+        # Initializes the connection to SQLite (and creates the due tables)
+        self.connection = sqlite.connect('./contactos_' + self.textualizeMail(userName) + '.db')
+        self.connection.text_factory = str
+
+        self.cursor = self.connection.cursor()
+
+        #Creates the database TABLES, if there is NONE
+        self.cursor.execute('CREATE TABLE IF NOT EXISTS contactos ' \
+                    '(id INTEGER PRIMARY KEY, nombre varchar(40), apellido varchar(40), email varchar(140) UNIQUE, compania varchar(140), posicion varchar(140), tipo varchar(40))')
+
+        self.log.debug("Database, READY to throw operations at her.")
+
+    def close_connection(self):
+        '''
+        Closes the database connection to avoid issues related to the connectivity.
+        '''
+        self.log.debug("Database offline.")
+        self.cursor.close()
 
 class PropertiesHandler():
     '''It opens the properties.ini file and loads into memory for consumption.'''
@@ -26,6 +203,7 @@ class PropertiesHandler():
     user = None
     pwd = None
     server_url=None
+    projects=None
     
     def __init__(self):
         self.load()
@@ -38,8 +216,12 @@ class PropertiesHandler():
         self.user = config.get('credentials','user')
         self.pwd = config.get('credentials','pwd')
         self.server_url = config.get('server','url')
-        
-
+        self.projects = config.get('monitor', 'projects').split(',')
+    
+    def getIterableProjects(self):
+        for project in self.projects:
+            yield project.strip() 
+    
 class FileManager():
     '''Just handles files for the current project and data availability'''
     def getSendToCSVFile(self, fileStr):
@@ -58,11 +240,13 @@ class JiraDataStructuresManager():
     ''' Extracts structural data from Jira for further analysis '''
     options = None
     jira = None
-    
+    cfg = None
+        
     def __init__(self):
         # By default, the client will connect to a JIRA instance started from the Atlassian Plugin SDK.
         # See https://developer.atlassian.com/display/DOCS/Installing+the+Atlassian+Plugin+SDK
         # for details.
+        self.cfg = PropertiesHandler()
         
         self.options = {'server': __JIRA_SERVER__}
         self.jira = JIRA(self.options, basic_auth=(self.cfg.user, self.cfg.pwd))  # a username/password tuple
@@ -76,8 +260,8 @@ class JiraDataStructuresManager():
         for board in boards:
             
             try:
-                sprints = self.jira.sprints(board.id)  # , False, 0, None, None)   
-    
+                sprints = self.jira.sprints(board.id)   
+            
                 for s in sprints:
                     csv += board.name + ";" + s.name + ";" + s.state + "\n"
                     
@@ -142,9 +326,15 @@ class JiraDataStructuresManager():
 class JiraDataExtractor():
 
     cfg = None
+    
     def __init__(self):
         '''Getting the configuration data'''
         self.cfg = PropertiesHandler()
+    
+    def connect(self):
+        '''It connects against the pre configured Jira server.'''
+        self.options = {'server': self.cfg.server_url}
+        self.jira = JIRA(self.options, basic_auth=(self.cfg.user, self.cfg.pwd)) # a username/password tuple
         
     def listProjectProgressAndCosts(self, projectName): #TODO: Refactorizar URGENTE!!!
         '''Given a project, passed by parameter, it throws an CSV file with the costs, the progress and current situation.'''
@@ -264,6 +454,7 @@ class JiraDataExtractor():
         print("\n"*3)
         print("-"*80)
         print("\n")
+        print("Project: " + str(projectName) + "\n")
         print("Total issues: " + str(totalIssues))
         print("Completed Development SPs: " + str(completedDevelopmentSPs) + "/" + str(totalDevelopmentSPs))
         print("Completed Analysis SPs: " + str(completedAnalysisSPs) + "/" + str(totalAnalysisSPs))
@@ -296,6 +487,10 @@ class JiraDataExtractor():
 
     def listAllIssuesOfGivenProjectsSet(self):
         '''It gets a list of projects from a configuration file '''
+        
+        for project in self.cfg.getIterableProjects():
+            self.listProjectProgressAndCosts(project)
+            
     
 
 # Find the top three projects containing issues reported by admin
@@ -305,10 +500,9 @@ class JiraDataExtractor():
 #*********************************    
         
 #flmng = FileManager()
-#jiramng = JiraDataStructuresManager()
+jiramng = JiraDataExtractor()
 
 #flmng.getSendToOutputFile(jiramng.getAllProjectsAsCSV())
 #flmng.getSendToOutputFile(jiramng.getAllSprintNames())
 
-props  = PropertiesHandler()
-print(props.server_url)
+jiramng.listAllIssuesOfGivenProjectsSet()

@@ -119,6 +119,7 @@ for i in issues:
         #Getting the related EPIC Name.
         try:
             epicName = str(i.fields.customfield_11606)
+            
         except Exception as e:
             epicName = ""
 
